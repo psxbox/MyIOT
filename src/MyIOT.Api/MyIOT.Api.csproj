@@ -20,5 +20,6 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MyIOT.Shared\MyIOT.Shared.csproj" />
+    <ProjectReference Include="..\..\MyIOT.ServiceDefaults\MyIOT.ServiceDefaults.csproj" />
   </ItemGroup>
 </Project>

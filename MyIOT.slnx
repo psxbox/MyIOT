@@ -5,6 +5,8 @@
   <Folder Name="/src/">
     <Project Path="src/MyIOT.Api/MyIOT.Api.csproj" />
     <Project Path="src/MyIOT.Shared/MyIOT.Shared.csproj" />
+    <Project Path="src/MyIOT.AppHost/MyIOT.AppHost.csproj" />
+    <Project Path="src/MyIOT.ServiceDefaults/MyIOT.ServiceDefaults.csproj" />
   </Folder>
   <Folder Name="/tests/">
     <Project Path="tests/MyIOT.Tests/MyIOT.Tests.csproj" />
