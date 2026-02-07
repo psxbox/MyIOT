@@ -24,7 +24,6 @@ public static class AttributeEndpoints
             return Results.Ok(new { message = "Attributes saved", count = request.Values.Count });
         })
         .WithName("SendAttributes")
-        .WithOpenApi()
         .RequireAuthorization();
 
         // Get attributes for a device
@@ -37,7 +36,6 @@ public static class AttributeEndpoints
             return Results.Ok(attributes);
         })
         .WithName("GetAttributes")
-        .WithOpenApi()
         .RequireAuthorization();
 
         return group;

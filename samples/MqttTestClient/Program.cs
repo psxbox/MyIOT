@@ -11,7 +11,6 @@
 using System.Text;
 using System.Text.Json;
 using MQTTnet;
-using MQTTnet.Client;
 
 // ─── Configuration ───
 const string brokerHost = "localhost";
@@ -21,7 +20,7 @@ const int brokerPort = 1883;
 const string ACCESS_TOKEN = "PASTE_YOUR_ACCESS_TOKEN_HERE";
 
 // ─── Create MQTT Client ───
-var factory = new MqttFactory();
+var factory = new MqttClientFactory();
 using var client = factory.CreateMqttClient();
 
 var options = new MqttClientOptionsBuilder()

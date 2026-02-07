@@ -14,7 +14,6 @@ public static class DeviceEndpoints
             return Results.Created($"/api/devices/{response.Id}", response);
         })
         .WithName("CreateDevice")
-        .WithOpenApi()
         .AllowAnonymous(); // Device provisioning is open (in production, protect this)
 
         group.MapGet("/devices", async (IDeviceService deviceService) =>
@@ -22,8 +21,7 @@ public static class DeviceEndpoints
             var devices = await deviceService.GetAllAsync();
             return Results.Ok(devices.Select(d => d.ToDto()));
         })
-        .WithName("ListDevices")
-        .WithOpenApi();
+        .WithName("ListDevices");
 
         group.MapGet("/devices/{id:guid}", async (Guid id, IDeviceService deviceService) =>
         {
@@ -33,8 +31,7 @@ public static class DeviceEndpoints
 
             return Results.Ok(device.ToDto());
         })
-        .WithName("GetDevice")
-        .WithOpenApi();
+        .WithName("GetDevice");
 
         return group;
     }

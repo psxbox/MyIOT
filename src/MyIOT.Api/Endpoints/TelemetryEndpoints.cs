@@ -23,7 +23,6 @@ public static class TelemetryEndpoints
             return Results.Ok(new { message = "Telemetry saved", count = request.Values.Count });
         })
         .WithName("SendTelemetry")
-        .WithOpenApi()
         .RequireAuthorization();
 
         // Get latest telemetry for a device
@@ -33,7 +32,6 @@ public static class TelemetryEndpoints
             return Results.Ok(latest);
         })
         .WithName("GetLatestTelemetry")
-        .WithOpenApi()
         .RequireAuthorization();
 
         // Get telemetry history for a device
@@ -51,7 +49,6 @@ public static class TelemetryEndpoints
             return Results.Ok(history);
         })
         .WithName("GetTelemetryHistory")
-        .WithOpenApi()
         .RequireAuthorization();
 
         return group;

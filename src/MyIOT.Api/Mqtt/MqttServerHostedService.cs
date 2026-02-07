@@ -1,9 +1,9 @@
 using System.Collections.Concurrent;
 using System.Text;
-using MQTTnet;
-using MQTTnet.Protocol;
 using MQTTnet.Server;
+using MQTTnet.Protocol;
 using MyIOT.Api.Services;
+using System.Buffers;
 
 namespace MyIOT.Api.Mqtt;
 
@@ -42,7 +42,7 @@ public class MqttServerHostedService : IHostedService, IDisposable
             .WithDefaultEndpointPort(port)
             .Build();
 
-        _mqttServer = new MqttFactory().CreateMqttServer(options);
+        _mqttServer = new MqttServerFactory().CreateMqttServer(options);
     }
 
     public async Task StartAsync(CancellationToken cancellationToken)
@@ -116,7 +116,7 @@ public class MqttServerHostedService : IHostedService, IDisposable
         }
 
         var topic = args.ApplicationMessage.Topic;
-        var payload = args.ApplicationMessage.PayloadSegment.ToArray();
+        var payload = args.ApplicationMessage.Payload.ToArray();
 
         await _messageHandler.HandleAsync(topic, payload, deviceId);
 

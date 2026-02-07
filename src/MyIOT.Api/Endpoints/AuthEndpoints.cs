@@ -16,7 +16,6 @@ public static class AuthEndpoints
             return Results.Ok(response);
         })
         .WithName("DeviceLogin")
-        .WithOpenApi()
         .AllowAnonymous();
 
         return group;
