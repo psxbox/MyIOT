@@ -1,0 +1,12 @@
+<Solution>
+  <Folder Name="/samples/">
+    <Project Path="samples/MqttTestClient/MqttTestClient.csproj" />
+  </Folder>
+  <Folder Name="/src/">
+    <Project Path="src/MyIOT.Api/MyIOT.Api.csproj" />
+    <Project Path="src/MyIOT.Shared/MyIOT.Shared.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/MyIOT.Tests/MyIOT.Tests.csproj" />
+  </Folder>
+</Solution>
