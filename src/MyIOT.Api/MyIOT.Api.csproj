@@ -6,6 +6,8 @@
     <RootNamespace>MyIOT.Api</RootNamespace>
   </PropertyGroup>
   <ItemGroup>
+    <PackageReference Include="Aspire.Npgsql.EntityFrameworkCore.PostgreSQL" Version="13.1.0" />
+    <PackageReference Include="EFCore.NamingConventions" Version="10.0.1" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="10.0.2" />
     <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="10.0.2" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="10.0.2">
@@ -13,13 +15,12 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="MQTTnet.Server" Version="5.1.0.1559" />
-    <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="10.0.0" />
     <PackageReference Include="StackExchange.Redis" Version="2.10.14" />
     <PackageReference Include="MQTTnet" Version="5.1.0.1559" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="10.1.2" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MyIOT.Shared\MyIOT.Shared.csproj" />
-    <ProjectReference Include="..\..\MyIOT.ServiceDefaults\MyIOT.ServiceDefaults.csproj" />
+    <ProjectReference Include="..\MyIOT.ServiceDefaults\MyIOT.ServiceDefaults.csproj" />
   </ItemGroup>
 </Project>
