@@ -7,15 +7,12 @@ builder.AddDockerComposeEnvironment("env");
 var redis = builder.AddRedis("redis");
 
 var timescaledb = builder.AddPostgres("timescaledb")
-    .WithImage("timescale/timescaledb:latest-pg16")
-    .WithDataVolume("pgdata")
-    .WithEnvironment("POSTGRES_USER", "postgres")
-    .WithEnvironment("POSTGRES_PASSWORD", "postgres")
-    .WithEnvironment("POSTGRES_DB", "myiot");
+        .WithImage("timescale/timescaledb:latest-pg18");
+
+var myiotdb = timescaledb.AddDatabase("myiotdb");
 
 builder.AddProject<MyIOT_Api>("api")
-    .WithHttpHealthCheck()
-    .WaitFor(timescaledb)
-    .WaitFor(redis);
+    .WithReference(myiotdb)
+    .WaitFor(timescaledb);
 
 builder.Build().Run();
