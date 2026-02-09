@@ -17,10 +17,19 @@ var builder = WebApplication.CreateBuilder(args);
 
 var configuration = builder.Configuration;
 
+// ──────────────────── Service Defaults ─────────────────────
+
+builder.AddServiceDefaults();
+
 // ───────────────────── Database (PostgreSQL + TimescaleDB) ─────────────────────
 
-builder.Services.AddDbContext<AppDbContext>(options =>
-    options.UseNpgsql(configuration.GetConnectionString("DefaultConnection")));
+// builder.Services.AddDbContext<AppDbContext>(options =>
+//     options.UseNpgsql(configuration.GetConnectionString("DefaultConnection")));
+
+builder.AddNpgsqlDbContext<AppDbContext>("myiotdb", configureDbContextOptions: options =>
+{
+    options.UseSnakeCaseNamingConvention();
+});
 
 // ───────────────────── Redis ─────────────────────
 
@@ -104,12 +113,13 @@ builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowBlazorClient", policy =>
     {
-        policy.WithOrigins("https://localhost:5002", "http://localhost:5003")
+        policy
               .AllowAnyHeader()
               .AllowAnyMethod()
               .AllowCredentials();
     });
 });
+
 
 // ═══════════════════════════════════════════════════════════
 var app = builder.Build();
@@ -139,6 +149,9 @@ api.MapAuthEndpoints();
 api.MapDeviceEndpoints();
 api.MapTelemetryEndpoints();
 api.MapAttributeEndpoints();
+
+// ───────────────────── Default Endpoints ─────────────────────
+app.MapDefaultEndpoints();
 
 // ───────────────────── Database Migration on Startup ─────────────────────
 
