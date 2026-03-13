@@ -4,7 +4,7 @@
 
 ## Архитектура
 
-- **Backend**: ASP.NET Core 9 (Minimal APIs)
+- **Backend**: ASP.NET Core 10 (Minimal APIs)
 - **Database**: PostgreSQL 16 + TimescaleDB (для телеметрии)
 - **Cache**: Redis (последние значения телеметрии)
 - **Transport**: MQTT (встроенный брокер MQTTnet) + HTTP REST API
